@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /var/www/html
+cd /app
 
 
 # build the latest Docker image
