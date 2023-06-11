@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /app
+cd /app/login-page
 
 
 # build the latest Docker image
