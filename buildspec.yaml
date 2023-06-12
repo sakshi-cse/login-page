@@ -7,19 +7,19 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 894776064790.dkr.ecr.ap-south-1.amazonaws.com
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/j6r0i7r3
   build:
     commands:
       - echo Building Docker image...
       - docker build -t nodejs-app-task-1 .
       - echo Pushing Docker image to ECR...
-      - docker tag nodejs-app-task-1:latest 894776064790.dkr.ecr.ap-south-1.amazonaws.com/ec2-repo:latest
-      - docker push 894776064790.dkr.ecr.ap-south-1.amazonaws.com/ec2-repo:latest
+      - docker tag nodejs-app-task-1:latest public.ecr.aws/j6r0i7r3/node-app:latest
+      - docker push public.ecr.aws/j6r0i7r3/node-app:latest
   post_build:
     commands:
       - echo Build completed on date
       - echo Creating image definitions file...
-      - echo '[{"name":"node-ec2","imageUri":"894776064790.dkr.ecr.ap-south-1.amazonaws.com/ec2-repo:latest","containerPort":8080}]' > imagedefinitions.json
+      - echo '[{"name":"node-app","imageUri":"public.ecr.aws/j6r0i7r3/node-app:latest","containerPort":8080}]' > imagedefinitions.json
 
 artifacts:
   files:
