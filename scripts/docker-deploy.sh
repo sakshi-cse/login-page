@@ -11,4 +11,4 @@ sudo docker stop my-container || true
 sudo docker rm my-container || true
 
 # Run the Docker container with the updated image
-sudo docker run -d --name my-container -p 80:80 node-app:latest
+sudo docker run -d --name my-container -p 3000:3000 node-app:latest
